@@ -3,9 +3,9 @@
 originally by [vWorkApp](http://www.vworkapp.com)
 rewritten for 0.3.0 by [rknLA](http://github.com/rknLA) with substantial help from [lsegal](http://gnuu.org/)
 
-A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services. 
+A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services.
 
-## Install
+## Install original gem
     sudo gem install yard-rest
 
 It also requires the Jeweler gem if you plan to use the rake build tasks.
@@ -30,6 +30,15 @@ You may need to include the following dependencies as well:
 If you include yard-rest in your gemfile, you should generate docs using bundle exec:
 
     bundle exec yardoc --plugin rest --title "Our App's API"
+
+## Using this fork
+
+Above instructions are for the main gem.
+This fork has not been released to a gem repository yet. If it ripens I might do so.
+
+For now, to use it you may want to generate the gem locally or write in your gemfile:
+
+    gem 'yard-rest', git: 'git://github.com/dwaynemac/yard-rest-plugin.git'
 
 ## Writing Comments
 
