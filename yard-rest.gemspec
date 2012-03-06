@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "lib/yard-rest.rb",
     "lib/yard-rest/rest_filters.rb",
     "lib/yard-rest/tags.rb"
-  ]
+  ] + Dir["templates/**/*"]
   s.homepage = "http://github.com/rknLA/yard-rest-plugin"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.10"
@@ -41,4 +41,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<yard>, ["~> 0.7.4"])
   end
 end
-
