@@ -1,0 +1,20 @@
+<% if object.has_tag?(:key_for) %>
+  <% object.tags(:key_for).group_by{|tag| tag.name }.each_pair do |hash_name, tags| %>
+    <h3>Keys for Hash (<tt><%= hash_name %></tt>):</h3>
+    <ul>
+    <% tags.each do |tag| %>
+      <li>
+        <span class="name"><%= tag.pair.name %></span>
+        <span class="type"><%= format_types(tag.pair.types) || ['Object'] %></span>
+        <span class="default">
+          <% if tag.pair.defaults %>
+            &mdash; default:
+          <%= tag.pair.defaults.map {|t| "<tt>#{h t}</tt>" }.join(", ") %>
+          <% end %>
+        </span>
+        <%= htmlify_line(tag.pair.text) if tag.pair.text %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>

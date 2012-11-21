@@ -1,13 +1,15 @@
 def init
   super
-  sections :index, [:argument,
-                    :optional_argument,
-                    :example_request,
-                    :request_field,
-                    :example_response,
-                    :response_field,
-                    :header,
-                    :response_code]
+  sections.push(:index,[:argument,
+                        :optional_argument,
+                        :key_for,
+                        :value_for,
+                        :example_request,
+                        :request_field,
+                        :example_response,
+                        :response_field,
+                        :header,
+                        :response_code])
 end
 
 def request_field
@@ -43,4 +45,3 @@ def generic_tag(name, opts = {})
   @no_names, @no_types = nil, nil
   out
 end
-

@@ -1,0 +1,13 @@
+<% if object.has_tag?(:value_for) %>
+  <% object.tags(:value_for).group_by{|tag| tag.name }.each_pair do |argument_name, tags| %>
+    <h3>Valid values for (<tt><%= argument_name %></tt>):</h3>
+    <ul>
+    <% tags.each do |tag| %>
+      <li>
+        <span class="name"><%= tag.pair.name %></span>
+        <%= htmlify_line(tag.pair.text) if tag.pair.text %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>

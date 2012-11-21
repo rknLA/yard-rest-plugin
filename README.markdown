@@ -3,9 +3,9 @@
 originally by [vWorkApp](http://www.vworkapp.com)
 rewritten for 0.3.0 by [rknLA](http://github.com/rknLA) with substantial help from [lsegal](http://gnuu.org/)
 
-A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services. 
+A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services.
 
-## Install
+## Install original gem
     sudo gem install yard-rest
 
 It also requires the Jeweler gem if you plan to use the rake build tasks.
@@ -14,7 +14,7 @@ It also requires the Jeweler gem if you plan to use the rake build tasks.
 
 When using yardoc you ask it to use the "rest" plugin (the --plugin option). For example: 
 
-    yardoc '*.rb' --plugin rest --title "Our App's API"
+    yardoc --plugin rest --title "Our App's API"
 
 ## Gemfile functionality
 
@@ -29,7 +29,16 @@ You may need to include the following dependencies as well:
 
 If you include yard-rest in your gemfile, you should generate docs using bundle exec:
 
-    bundle exec yardoc '*.rb' --plugin rest --title "Our App's API"
+    bundle exec yardoc --plugin rest --title "Our App's API"
+
+## Using this fork
+
+Above instructions are for the main gem.
+This fork has not been released to a gem repository yet. If it ripens I might do so.
+
+For now, to use it you may want to generate the gem locally or write in your gemfile:
+
+    gem 'yard-rest', git: 'git://github.com/dwaynemac/yard-rest-plugin.git'
 
 ## Writing Comments
 
@@ -39,11 +48,15 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @topic topic. Specifies the topic to categorise a **class** (not a method) under.
 
-- @required_argument [type] name description. Specifies an argument that must be passed to the service. You can specify as 
+- @argument [type] name description. Specifies an argument that must be passed to the service. You can specify as 
     many of these as you need.
 
 - @optional_argument [type] name description. Specifies an optional argument that may be passed to the service. You can specify as 
     many of these as you need. 
+
+- @key_for hash_name [type] name description. Specifies element of a hash argument.
+
+- @value_for argument_name value description. Specifies valid value of an argument.
 
 - @example_request example. An example of the request that is send to the service.
 
@@ -54,17 +67,27 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @response_field name description. Further specifies the fields that are returned within the response
 
+- @response_code code
+
+- @header
+
+- @image
+
 ## Ignored Documentation
 
 This plugin only documents **classes** and **methods** with **@url** tags. It does not support module documentation.
 
 The rationale here is that you are documenting external services (as represented by controllers and methods), and not internal code.
 
+Both controller *and* methods must have @url and @topic tags to be included in documentation.
+
+Methods with the @overall tag will be ignored.
+
 ## Example:
 
     ##
     # Retuns all samples, as XML, for the current user that match the given parameters.
-    # 
+    #
     # @url [GET] /samples.[format]?[arguments]
     # @url [GET] /samples/index.[format]?[arguments]
     # 
