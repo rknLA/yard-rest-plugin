@@ -48,7 +48,7 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @topic topic. Specifies the topic to categorise a **class** (not a method) under.
 
-- @required_argument [type] name description. Specifies an argument that must be passed to the service. You can specify as 
+- @argument [type] name description. Specifies an argument that must be passed to the service. You can specify as 
     many of these as you need.
 
 - @optional_argument [type] name description. Specifies an optional argument that may be passed to the service. You can specify as 
@@ -56,7 +56,7 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @key_for hash_name [type] name description. Specifies element of a hash argument.
 
-- @value_for argument_name name description. Specifies valid value of an argument.
+- @value_for argument_name value description. Specifies valid value of an argument.
 
 - @example_request example. An example of the request that is send to the service.
 
@@ -67,7 +67,7 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @response_field name description. Further specifies the fields that are returned within the response
 
-- @response_code
+- @response_code code
 
 - @header
 
